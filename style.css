@@ -1,0 +1,307 @@
+:root {
+    --primary-red: #d32f2f;
+    --dark-red: #9a0007;
+    --wax-red: #b71c1c;
+    --bg-pink: #ffdde1;
+    --light-red: #ff5252;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* --- CORAZONES --- */
+#hearts-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-heart {
+    position: absolute;
+    color: var(--light-red);
+    animation: floatUp linear forwards;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- SOBRE --- */
+.envelope-wrapper {
+    position: relative;
+    width: 320px;
+    height: 210px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.3s;
+    z-index: 5;
+}
+
+.envelope-wrapper:hover { transform: scale(1.05); }
+
+.instruction {
+    position: absolute;
+    top: -70px; width: 100%;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--primary-red);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.envelope {
+    position: relative;
+    width: 100%; height: 100%;
+    background-color: var(--dark-red);
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.flap { position: absolute; width: 100%; height: 100%; transition: transform 0.6s ease; }
+.top-flap { background: var(--primary-red); clip-path: polygon(0 0, 100% 0, 50% 55%); z-index: 5; transform-origin: top; }
+.bottom-flap { background: var(--light-red); clip-path: polygon(0 100%, 100% 100%, 50% 45%); z-index: 4; }
+.left-flap { background: #e53935; clip-path: polygon(0 0, 50% 50%, 0 100%); z-index: 3; }
+.right-flap { background: #e53935; clip-path: polygon(100% 0, 50% 50%, 100% 100%); z-index: 3; }
+
+.wax-seal {
+    position: absolute; top: 52%; left: 50%;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, var(--wax-red) 60%, #8b0000);
+    transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 6;
+    display: flex; justify-content: center; align-items: center;
+}
+.wax-seal::after { content: '❤️'; font-size: 25px; color: white; }
+
+/* --- CARTA RESPONSIVA --- */
+.letter {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 280px; height: 180px;
+    background: white;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0; z-index: 10;
+    transition: all 0.8s cubic-bezier(0.17, 0.84, 0.44, 1.2);
+    border-radius: 15px;
+}
+
+.envelope-wrapper.open .letter {
+    width: 92vw; height: 85vh;
+    max-width: 450px; max-height: 650px;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.letter-border {
+    border: 2px solid var(--primary-red);
+    width: 94%; height: 96%;
+    margin: 2% auto;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: #fff9f9;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px var(--primary-red);
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* --- REPRODUCTOR SPOTIFY MINI --- */
+.spotify-player {
+    background: rgba(33, 33, 33, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px;
+    width: 90%; 
+    max-width: 280px;
+    margin-bottom: 15px;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.spotify-info { display: flex; align-items: center; width: 100%; margin-bottom: 8px; }
+.album-cover { width: 40px; height: 40px; border-radius: 5px; margin-right: 12px; }
+.song-title { color: white; font-weight: bold; font-size: 0.85rem; display: block; }
+.artist-name { color: #b3b3b3; font-size: 0.75rem; }
+.spotify-controls { display: flex; justify-content: space-evenly; width: 60%; color: white; font-size: 1rem; }
+
+/* --- TITULOS Y TEXTO SCRAMBLE --- */
+h1#scramble-title {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary-red);
+    font-size: 2.2rem;
+    margin: 10px 0;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+/* --- POLAROID --- */
+.polaroid-frame {
+    background: white;
+    padding: 10px 10px 30px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    width: 80%; max-width: 230px;
+    margin: 15px auto;
+    transform: rotate(-2deg);
+}
+
+.polaroid-images {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+
+.polaroid-photo {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.polaroid-photo.active { opacity: 1; }
+.polaroid-caption { font-family: 'Dancing Script', cursive; font-size: 1.2rem; color: #333; margin-top: 8px; text-align: center; }
+
+/* --- TARJETA DE CITA (QUOTE CARD) --- */
+.quote-card {
+    background: rgba(211, 47, 47, 0.05);
+    border-left: 4px solid var(--primary-red);
+    border-right: 4px solid var(--primary-red);
+    padding: 20px;
+    margin: 10px auto;
+    width: 85%;
+    border-radius: 15px;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.envelope-wrapper.open .quote-card {
+    animation: fadeInUp 1.5s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.quote-icon { font-size: 1.2rem; margin-bottom: 10px; opacity: 0.8; }
+.quote-text {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 1.4rem !important;
+    color: #333;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* --- CONTENIDO PRINCIPAL DE LA CARTA --- */
+.main-letter-content {
+    width: 95%;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+.romantic-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: var(--primary-red);
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+}
+
+.envelope-wrapper.open .romantic-title {
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.letter-text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+    text-align: left;
+}
+
+.letter-text p { margin-bottom: 15px; }
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    text-align: right;
+    color: var(--dark-red);
+    margin-top: 30px;
+}
+
+/* --- SECCIÓN FINAL CENTRADA --- */
+.final-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+
+.special-btn {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+    transition: all 0.3s;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.special-btn:hover { background-color: var(--dark-red); transform: translateY(-3px); }
+
+.video-wrapper {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+    border: 2px solid white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    display: none; /* Controlado por JS */
+}
+
+.video-wrapper video { display: block; width: 100%; }
+
+/* --- BOTÓN CERRAR --- */
+.close-btn {
+    position: absolute; top: 5px; right: 10px;
+    font-size: 2rem; color: var(--primary-red);
+    border: none; background: none; cursor: pointer; z-index: 20;
+}
+
+/* Animaciones */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}

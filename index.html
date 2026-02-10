@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mi Carta Especial ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <div class="envelope-wrapper" id="envelope">
+        <div class="instruction">Ábreme, te va a sorprender</div>
+        
+        <div class="envelope">
+            <div class="flap top-flap"></div>
+            <div class="flap left-flap"></div>
+            <div class="flap right-flap"></div>
+            <div class="flap bottom-flap"></div>
+            <div class="wax-seal"></div>
+        </div>
+        
+        <div class="letter" id="letter">
+            <button class="close-btn" id="close">&times;</button>
+            <div class="letter-border">
+                <div class="scroll-content">
+                    
+                    <div class="spotify-player">
+                        <div class="spotify-info">
+                            <img src="Album mi religion.jpg" alt="Album Cover" class="album-cover">
+                            <div class="song-details">
+                                <span class="song-title">Eres Mi Religión</span>
+                                <span class="artist-name">Maná, Joy</span>
+                            </div>
+                        </div>
+                        <div class="spotify-controls">
+                            <span class="control-icon">⏮</span>
+                            <span class="control-icon play-btn">⏸</span>
+                            <span class="control-icon">⏭</span>
+                        </div>
+                    </div>                
+                    
+                    <h1 id="scramble-title"></h1>
+                    
+                    <div class="polaroid-frame">
+                        <div class="polaroid-images">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.46 PM (1).jpeg" alt="Momento 1" class="polaroid-photo active">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.46 PM.jpeg" alt="Momento 2" class="polaroid-photo">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.56 PM (1).jpeg" alt="Momento 3" class="polaroid-photo">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.56 PM.jpeg" alt="Momento 4" class="polaroid-photo">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.57 PM (1).jpeg" alt="Momento 5" class="polaroid-photo">
+                            <img src="Photos/WhatsApp Image 2026-02-08 at 6.28.57 PM.jpeg" alt="Momento 6" class="polaroid-photo">
+                        </div>
+                        <div class="polaroid-caption">Nuestro amor ❤️</div>
+                    </div>
+
+                    <br><br><br>
+
+                    <div class="quote-card">
+                        <div class="quote-icon">✨</div>
+                        <p class="quote-text">"Eres la oración contestada que una vez le pedí a Dios"</p>
+                    </div>
+
+                    <div class="main-letter-content">
+                        <h2 class="romantic-title">Te Amo Nathaly</h2>
+                        
+                        <div class="letter-text">
+                            <p>Escribir lo que siento por ti no es fácil, porque las palabras a veces se quedan cortas para describir la inmensidad de este amor...</p>
+                            <p>Desde que llegaste, mi mundo tiene más color, mis días tienen más sentido y mi corazón encontró finalmente su lugar seguro. Gracias por ser mi apoyo, mi risa y mi oración contestada.</p>
+                            <p>Prometo cuidarte y amarte en cada paso que demos juntos. Eres y serás siempre lo más bonito de mi vida.</p>
+                            
+                            <p class="signature">Por siempre tuyo, <br> Luis</p>
+
+                            <div class="final-section">
+                                <button id="surprise-btn" class="special-btn">Este no es el final - Presiona</button>
+                                
+                                <div id="video-container" class="video-wrapper" style="display: none; margin-top: 20px;">
+    <video id="surprise-video" width="100%" controls playsinline preload="auto">
+        <source src="Video/WhatsApp-Video-2026-02-10-at-12.57.21-AM.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+<div id="secret-section" style="display: none; text-align: center; margin-top: 20px; animation: fadeInUp 1s ease;">
+    <h3 class="romantic-title" style="font-size: 2rem;">¿Te cuento un secreto?</h3>
+    <div style="display: flex; gap: 15px; justify-content: center;">
+        <button id="btn-si" class="special-btn" style="background-color: #2e7d32;">Sí, dímelo</button>
+        <button id="btn-no" class="special-btn" style="background-color: #555;">No...</button>
+    </div>
+</div>
+                            </div> </div> </div> </div> </div> </div> </div> <audio id="background-music" src="Mireligion.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
