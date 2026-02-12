@@ -1,5 +1,4 @@
 const envelope = document.getElementById('envelope');
-const closeBtn = document.getElementById('close');
 const heartsContainer = document.getElementById('hearts-container');
 const music = document.getElementById('background-music');
 const photos = document.querySelectorAll('.polaroid-photo');
@@ -82,19 +81,7 @@ envelope.addEventListener('click', () => {
             solveText(target, "Será nuestra canción siempre ❤️");
         }, 1500); 
     }
-});
-
-// --- EVENTO PARA CERRAR ---
-closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-    if (music) {
-        music.pause();
-        music.currentTime = 0;
-    }
-    clearInterval(heartsInterval);
-    clearInterval(photoInterval);
-    location.reload(); 
-});
+}); 
 
 // --- EVENTO BOTÓN SORPRESA (VIDEO LOCAL) ---
 if (surpriseBtn) {
@@ -143,6 +130,6 @@ btnSi.addEventListener('click', () => {
 
 // Si responde que NO (Efecto divertido: el botón se escapa o simplemente da un mensaje)
 btnNo.addEventListener('click', () => {
-    alert("¡Igual te lo voy a decir porque te amo! 😂");
-    btnSi.click(); // Forzamos el mensaje positivo
+    btnNo.innerText = "¡Dime que sí! ❤️"; // Cambia el texto del botón en lugar de un alert
+    setTimeout(() => btnSi.click(), 1000); 
 });
